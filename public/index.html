@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Health Map | Los Angeles</title>
+
+    <!-- MapLibre GL JS -->
+    <script src='https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.css' rel='stylesheet' />
+
+    <!-- Custom CSS -->
+    <style>
+        /* Core styles */
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #81C784;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Header styles */
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/karsten-wurth-UbGYPMbMYP8-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Map section */
+        .map-section {
+            padding: 2rem;
+        }
+
+        #map {
+            width: 100%;
+            height: 70vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Features section */
+        .features {
+            padding: 4rem 2rem;
+            background-color: #f5f5f5;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* CTA section */
+        .cta {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #66BB6A;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: var(--text-light);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">Environmental Health Map</div>
+        <nav class="nav-links">
+            <a href="#map">Map</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Mapping Environmental Health in Los Angeles</h1>
+            <p>Explore drought conditions, food insecurity, and environmental nonprofits in your community.</p>
+            <a href="#map" class="button">Explore the Map</a>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div id="map"></div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Drought Monitoring</h3>
+                <p>Track current drought conditions across Los Angeles County with regularly updated data.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Food Insecurity</h3>
+                <p>Visualize adult and child food insecurity rates across different neighborhoods.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Environmental Nonprofits</h3>
+                <p>Find local organizations working to improve environmental conditions in your area.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Make a Difference?</h2>
+        <p>Connect with local environmental organizations and take action in your community.</p>
+        <a href="#map" class="button">Get Started</a>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Environmental Health Map. All rights reserved.</p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+
+</html>
